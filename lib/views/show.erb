@@ -1,0 +1,14 @@
+<html>
+  <head>
+    <title>Potin <%=params['id']%></title>
+  </head>
+  <body>
+    <h1>PAGE POTIN</h1>
+    <p>Voici la page du potin n°<%=params["id"] %></p>
+    <p>Son auteur :<%=gossip.author%></p>
+    <p>Le contenu du potin :<%=gossip.content%></p>
+    <p><a href="/gossips/<%=params['id']%>/edit/">Lien</a> pour éditer le potin!</p>
+    <p><a href="/">Lien</a> pour revenir à la page des potins :)</p>
+    <p>Commentaires</p>
+  </body>
+</html>

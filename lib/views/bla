@@ -1,0 +1,14 @@
+
+
+            <!--<% gossips.each_with_index.map do |gossip, index|%>
+      <p><a href="/gossips/<%index%>">Potin n°<%=index%> de <%gossip.author%></a></p>
+      <% end %>-->
+
+
+          <% gossips.each do |gossip| %>
+        <p>
+        <a href="/gossips/">
+          <%= gossip.author %><br/>
+          <%= gossip.content %>
+        </a></p>
+      <% end %>
