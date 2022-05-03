@@ -3,12 +3,22 @@
     <title>Potin <%=params['id']%></title>
   </head>
   <body>
-    <h1>PAGE POTIN</h1>
-    <p>Voici la page du potin n°<%=params["id"] %></p>
-    <p>Son auteur :<%=gossip.author%></p>
-    <p>Le contenu du potin :<%=gossip.content%></p>
+    <h1 style="font-family:'Sans serif'">PAGE DE POTIN</h1><br>
+    <blockquote>
+    <p><span style="font-weight:bold;text-decoration:underline">Son auteur</span> :<%=gossip.author%></p>
+    <p><span style="font-weight:bold;text-decoration:underline">Potin n°<%=params["id"] %></span> : <%=gossip.content%></p><br>
+    </blockquote>
     <p><a href="/gossips/<%=params['id']%>/edit/">Lien</a> pour éditer le potin!</p>
-    <p><a href="/">Lien</a> pour revenir à la page des potins :)</p>
-    <p>Commentaires</p>
+    <p><a href="/">Lien</a> pour revenir à la page des potins :)</p><br>
+    <p style="color:#ff009d;font-weight:bold;text-decoration:underline">Commentaires</p>
+      <ul>
+      <% comments.each do |comment|%>
+        <li><p><%=comment%></p></li>
+      <% end %>
+      </ul>
+    <form action='/gossips/<%=params["id"]%>/' method='POST'>
+      Commente le potin : <input type='text' name='gossip_comment'/><br/>
+      <input type='submit' value='Ajouter un commentaire'/>
+    </form>
   </body>
 </html>

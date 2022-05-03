@@ -1,30 +1,31 @@
 class Gossip
 
-    attr_accessor :author, :content, :comments
+    attr_accessor :author, :content
 
     def initialize(author, content)
         @author = author
         @content = content
-        @comments = []
     end
 
-    def save
-        # headers = ["author", "content"]
+    def save #ajoute une ligne au csv"
+        gossip = [@author, @content]
         CSV.open("db/gossip.csv", "a+") do |csv|
-            # csv << headers if csv.count.eql? 0
-            csv << [@author, @content, @comments]
+            csv << gossip
         end
+        index = CSV.read("db/gossip.csv").size
+        puts index
+        comm = Comment.new(" ", index).save
         puts " >> C'est dans la boite, merci!\n\n".magenta
     end
 
-    def self.update(author, content, index)
+    def self.update(author, content, index) #change le contenu de la ligne
         gossips_array = all
         puts gossips_array
         gossips_array[index.to_i-1].content = author
         gossips_array[index.to_i-1].content = content
         CSV.open("db/gossip.csv", "wb") do |csv|
             gossips_array.each do |gossip|
-                csv << [gossip.author, gossip.content, gossip.comment]
+                csv << [gossip.author, gossip.content]
             end
         end
     end
@@ -38,11 +39,8 @@ class Gossip
         return all_gossips
     end
 
-    def self.find(id)
+    def self.find(id) #renvoit un gossip
         return all[id.to_i - 1]
-    end
-
-    def comment(new_comment)
     end
 
 end

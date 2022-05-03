@@ -3,13 +3,14 @@
     <title>Edition du potin <%=id%></title>
   </head>
   <body>
-    <h1>EDITION DU POTIN</h1>
+    <h1 style="font-family:'Sans serif'">EDITION DU POTIN</h1><br>
     <p>Voici la page du potin n°<%=id%></p>
     <p><a href="/">Lien</a> pour revenir à la page des potins :)</p>
+
     <form action='/gossips/<%=id%>/edit/' method='POST'>
       Saisi ici ton nom :  <input type='text' name='gossip_author' value='<%=gossip.author%>'/><br/>
       Edite le potin : <input type='text' name='gossip_content' value='<%=gossip.content%>'/><br/>
-      <input type='submit'/>
+      <input type='submit' value='ajouter un potin!'/>
     </form>
   </body>
 </html>
